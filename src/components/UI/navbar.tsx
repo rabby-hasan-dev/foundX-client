@@ -16,6 +16,9 @@ import { ThemeSwitch } from "@/src/components/UI/theme-switch";
 import {
   Logo,
 } from "@/src/components/icons";
+import { Avatar } from "@nextui-org/avatar";
+import NavbarDropdwon from "./NavbarDropdwon";
+
 
 
 export const Navbar = () => {
@@ -54,6 +57,11 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
+        </NavbarItem>
+     
+        <NavbarItem className="hidden sm:flex gap-2">
+        
+          <NavbarDropdwon></NavbarDropdwon>
         </NavbarItem>
      
       </NavbarContent>
