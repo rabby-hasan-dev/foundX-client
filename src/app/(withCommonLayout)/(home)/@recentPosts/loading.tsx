@@ -19,8 +19,8 @@ const Loading = async () => {
             <div className="my-8 grid justify-center gap-10 sm:grid-cols-1 md:grid-cols-4">
 
                 {
-                    [...Array(9)].map(() => (
-                        <CardSkeleton></CardSkeleton>
+                    [...Array(9)].map((item, index) => (
+                        <CardSkeleton key={index + 1} ></CardSkeleton>
                     ))
                 }
 
