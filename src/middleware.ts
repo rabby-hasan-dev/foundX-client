@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { getCurrentUser } from './services/AuthService';
+import { protectedRoutes } from './constant';
 
 type Role = keyof typeof roleBasedRoutes;
 
@@ -46,4 +47,5 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
     matcher: ['/profile','/profile/:page*', '/admin', '/login', '/register'],
+   
 }

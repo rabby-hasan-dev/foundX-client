@@ -1,29 +1,36 @@
 'use client'
 
+import { protectedRoutes } from '@/src/constant';
 import { useUser } from '@/src/context/user.provider';
 import { logOut } from '@/src/services/AuthService';
 import { Avatar } from '@nextui-org/avatar';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/dropdown';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 
 const NavbarDropdwon = () => {
   const { user, setIsLoading: userLoading } = useUser();
   const router = useRouter();
+  const path = usePathname();
 
-  console.log( 'avater photo',user?.profilePhoto);
-  const handleNavigation = (path: string) => {
-    router.push(path);
+  const handleNavigation = (pathName: string) => {
+    router.push(pathName);
   }
   const handleLogout = () => {
     logOut()
     userLoading(true);
+    if (protectedRoutes.some((route) => path.match(route))) {
+      router.push('/')
+    }
+
+
+
   }
 
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Avatar  src={user?.profilePhoto || undefined} />
+        <Avatar src={user?.profilePhoto || undefined} />
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem onClick={() => handleNavigation('/profile')} >Profile</DropdownItem>
