@@ -11,7 +11,7 @@ interface ClaimRequestModelProps {
     quessions: string[];
 }
 
-const ClaimRequestModel = ({ id, quessions }: ClaimRequestModelProps) => {
+const ClaimRequestModal = ({ id, quessions }: ClaimRequestModelProps) => {
     const { mutate: handleClaimRequest, isPending ,isError} = useAddClaimRequest();
   
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -48,4 +48,4 @@ const ClaimRequestModel = ({ id, quessions }: ClaimRequestModelProps) => {
     );
 };
 
-export default ClaimRequestModel;
+export default ClaimRequestModal;
